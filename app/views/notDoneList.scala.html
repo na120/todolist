@@ -1,0 +1,43 @@
+@(tasks: Seq[models.Task])
+
+@import helper._
+
+@entryRow2(entry: models.Task) = {
+@if(entry.isDone == false){
+<tr id="@entry.id">
+    <td><a href="/todolist/@entry.id">@entry.id</a></td>
+    <td class="title">@entry.title</td>
+    <td class="isDone">@entry.isDone</td>
+    <td class="createdAt">@entry.createdAt</td>
+</tr>
+}
+}
+
+@views.html.main("") {
+<div class="w3-row">
+    <div class="w3-half">
+        <h3>未完了タスク</h3>
+    </div>
+    <div class="w3-right">
+        <a href="/todolist/register"><span class="w3-button w3-green">新規入力</span></a>
+    </div>
+    <div class="w3-right">
+        <a href="/todolist"><span class="w3-button w3-green">すべての登録済みタスク</span></a>
+    </div>
+</div>
+@if(tasks.nonEmpty) {
+<table id="todolist" class="w3-table w3-striped w3-border">
+    <tr>
+        <th></th>
+        <th>タイトル</th>
+        <th>完了</th>
+        <th>投稿日時</th>
+    </tr>
+    @for(entry <- tasks) {
+    @entryRow2(entry)
+    }
+</table>
+} else {
+<p>登録されたメッセージはありません</p>
+}
+}

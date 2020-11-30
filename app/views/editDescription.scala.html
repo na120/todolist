@@ -1,0 +1,16 @@
+@(task: models.Task)(implicit request: RequestHeader)
+
+@import helper._
+
+@title = @{request.session.get("task::title").getOrElse("")}
+
+@views.html.main("説明編集") {
+<dl>
+    <dt>説明編集</dt>
+</dl>
+<form action="/todolist/@task.id/description" method="POST">
+    @CSRF.formField
+    <textarea name="description" rows="4" cols="40">@task.description</textarea>
+    <input type="submit" value="OK">
+</form>
+}

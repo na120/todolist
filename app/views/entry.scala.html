@@ -1,0 +1,28 @@
+@(entry: models.Task)
+
+@views.html.main("登録済みメッセージ") {
+<table class="w3-table">
+    <tr>
+        <th>ID</th>
+        <td>@entry.id</td>
+    </tr>
+    <tr>
+        <th><a href="/todolist/@entry.id/title">タイトル</th>
+        <td>@entry.title</td>
+    </tr>
+    <tr>
+        <th><a href="/todolist/@entry.id/description">説明</th>
+        <td><textarea disabled>@entry.description</textarea></td>
+    </tr>
+    <tr>
+        <th>投稿日時</th>
+        <td>@entry.createdAt</td>
+    </tr>
+    <tr>
+        <th><a href="/todolist/@entry.id/done">完了</th>
+        <td>@entry.isDone</td>
+    </tr>
+</table>
+<a href="/todolist">戻る</a>
+<a href="/todolist/@entry.id/delete">削除</a>
+}

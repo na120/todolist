@@ -1,0 +1,20 @@
+@(message: String)(implicit request: RequestHeader)
+
+@import helper._
+
+@views.html.main("新規ユーザー登録") {
+<dl>
+    <h1>@message</h1>
+</dl>
+<form action="/login/newUserCheck" method="POST">
+    @CSRF.formField
+    <dl>
+        <dt>ユーザー名</dt>
+        <input type="text" name="name" >
+        <dt>パスワード</dt>
+        <input type="text" name="password">
+        <input type="submit" value="register">
+        <p><a href="/login">戻る</a></p>
+    </dl>
+</form>
+}

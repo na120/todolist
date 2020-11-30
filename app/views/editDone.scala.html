@@ -1,0 +1,15 @@
+@(task: models.Task)(implicit request: RequestHeader)
+
+@import helper._
+
+@views.html.main("完了編集") {
+<dl>
+    <dt>完了編集</dt>
+</dl>
+<form action="/todolist/@task.id/done" method="POST">
+    @CSRF.formField
+    <input type="radio" name="isDone" value=true @if(task.isDone == true){ checked } required>完了</input>
+    <input type="radio" name="isDone" value=false @if(task.isDone == false){ checked } required>未完了</input>
+    <input type="submit" value="OK">
+</form>
+}

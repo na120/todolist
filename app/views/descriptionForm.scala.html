@@ -1,0 +1,10 @@
+@(implicit request: RequestHeader)
+
+@import helper._
+
+@description = @{request.session.get("task::description").getOrElse("")}
+
+@register("説明入力",  "/todolist/register/description") {
+    @CSRF.formField
+    <textarea name="description" rows="4" cols="40"></textarea>
+}

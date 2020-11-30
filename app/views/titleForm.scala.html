@@ -1,0 +1,10 @@
+@(implicit request: RequestHeader)
+
+@import helper._
+
+@title = @{request.session.get("task::title").getOrElse("")}
+
+@register("タイトル入力",  "/todolist/register/title") {
+    @CSRF.formField
+    <input type="text" name="title" value="@title">
+}
