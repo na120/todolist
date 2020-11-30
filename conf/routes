@@ -1,0 +1,41 @@
+# TodoList
+GET     /                               controllers.TodoListController.index
+GET     /todolist                       controllers.TodoListController.todolist
+GET     /todolist/register              controllers.TodoListController.startRegistration
+POST    /todolist/register/title        controllers.TodoListController.registerTitle
+POST    /todolist/register/description  controllers.TodoListController.registerDescription
+POST    /todolist/register/confirm      controllers.TodoListController.confirm
+GET     /todolist/notDone               controllers.TodoListController.notDoneList
+GET     /todolist/:id                   controllers.TodoListController.entry(id: Int)
+GET     /todolist/:id/title             controllers.TodoListController.editTitle(id: Int)
+POST    /todolist/:id/title             controllers.TodoListController.confirmTitle(id: Int)
+GET     /todolist/:id/description       controllers.TodoListController.editDescription(id :Int)
+POST    /todolist/:id/description       controllers.TodoListController.confirmDescription(id: Int)
+GET     /todolist/:id/done              controllers.TodoListController.editDone(id :Int)
+POST    /todolist/:id/done              controllers.TodoListController.confirmDone(id :Int)
+GET     /todolist/:id/delete            controllers.TodoListController.delete(id :Int)
+GET     /login                          controllers.TodoListController.login
+GET     /login/userRegister             controllers.TodoListController.userRegister
+POST    /login/newUserCheck             controllers.TodoListController.newUserCheck
+POST    /login/userCheck                controllers.TodoListController.userCheck
+
+# test
+GET     /hello/               controllers.TestController.hello
+GET     /hello/:id            controllers.TestController.hello2(id:String)
+GET     /hello/re             controllers.TestController.hello
+
+# Formapp
+## Normal
+GET     /formapp/messages           controllers.formapp.FormappController.list
+GET     /formapp/messages/:id       controllers.formapp.FormappController.entry(id: Int)
+GET     /formapp/register           controllers.formapp.FormappController.startRegistration
+POST    /formapp/register/name      controllers.formapp.FormappController.registerName
+POST    /formapp/register/gender    controllers.formapp.FormappController.registerGender
+POST    /formapp/register/message   controllers.formapp.FormappController.registerMessage
+POST    /formapp/register/confirm   controllers.formapp.FormappController.confirm
+GET     /formapp                    controllers.Default.redirect(to = "/formapp/messages")
+
+# Resources
+GET     /robot.txt                  controllers.Default.notFound
+GET     /favicon.ico                controllers.Assets.at(path="/public/images", file="favicon.png")
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
